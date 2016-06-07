@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    android:orientation="vertical"
+    tools:context="com.apitest.MainActivity">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:background="@color/colorPrimaryDark"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="10dp"
+                android:text="@string/juletangceshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <LinearLayout
+                android:visibility="gone"
+                android:padding="10dp"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:text="@string/musicid"
+                    android:layout_width="0dp"
+                    android:layout_weight="3"
+                    android:layout_height="wrap_content"/>
+                <EditText
+                    android:hint="600907000001208713"
+                    android:layout_marginLeft="5dp"
+                    android:layout_weight="7"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    tools:ignore="HardcodedText"/>
+            </LinearLayout>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_alignParentLeft="true"
+                    android:onClick="executeJuLeTang2yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute2yuan_btn"
+                    android:id="@+id/executeJuLeTang2yuan_btn"/>
+
+                <Button
+                    android:layout_centerInParent="true"
+                    android:onClick="executeJuLeTang1fen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute1fen_btn"
+                    android:id="@+id/executeJuLeTang1fen_btn"/>
+
+                <Button
+                    android:layout_alignParentRight="true"
+                    android:onClick="executeJuLeTang6yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute6yuan"
+                    android:id="@+id/executeJuLeTang6yuan"
+                    tools:ignore="RelativeOverlap"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="10dp"
+                android:text="@string/tianlaizhishengceshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_alignParentLeft="true"
+                    android:onClick="executeTianLaiZhiSheng2yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute2yuan_btn"
+                    android:id="@+id/executeTianLaiZhiSheng2yuan_btn"/>
+
+                <Button
+                    android:layout_centerInParent="true"
+                    android:onClick="executeTianLaiZhiSheng1fen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute1fen_btn"
+                    android:id="@+id/executeTianLaiZhiSheng1fen_btn"/>
+
+                <Button
+                    android:layout_alignParentRight="true"
+                    android:onClick="executeTianLaiZhiSheng6yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute6yuan"
+                    android:id="@+id/executeTianLaiZhiSheng6yuan"
+                    tools:ignore="RelativeOverlap"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="10dp"
+                android:text="@string/yueyinyueceshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_alignParentLeft="true"
+                    android:onClick="executeYueyinyue2yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute2yuan_btn"/>
+
+                <Button
+                    android:layout_centerInParent="true"
+                    android:onClick="executeYueyinyue1fen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute1fen_btn"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:layout_alignParentRight="true"
+                    android:onClick="executeYueyinyue6yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute6yuan"
+                    tools:ignore="RelativeOverlap"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:background="@color/colorPrimary"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:padding="10dp"
+                android:text="@string/tiantiankuyinceshi"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <RelativeLayout
+                android:padding="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <Button
+                    android:layout_alignParentLeft="true"
+                    android:onClick="executeTiantiankuyin2yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute2yuan_btn"/>
+
+                <Button
+                    android:layout_centerInParent="true"
+                    android:onClick="executeTiantiankuyin1fen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute1fen_btn"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:layout_alignParentRight="true"
+                    android:onClick="executeTiantiankuyin6yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/execute6yuan"
+                    tools:ignore="RelativeOverlap"/>
+            </RelativeLayout>
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvProgressInfo"
+            android:padding="10dp"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="20dp"
+            android:hint="@string/hintProgress"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+
+</ScrollView>

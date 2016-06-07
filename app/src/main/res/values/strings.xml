@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">音乐破解测试</string>
+    <string name="amount">金额(单位分):</string>
+    <string name="musicid">音乐ID:</string>
+    <string name="musictype">音乐类型:</string>
+
+    <string name="juletangceshi">聚乐堂测试: channel_id(014A1HA),cpparam(JH6653)</string>
+    <string name="tianlaizhishengceshi">天籁之声测试: channel_id(014A1HJ),cpparam(JH6038)</string>
+    <string name="yueyinyueceshi">悦音乐测试: channel_id(014A1IB),cpparam(JH6000)</string>
+    <string name="tiantiankuyinceshi">天天酷音测试: channel_id(014A1IJ),cpparam(JH322222)</string>
+    <string name="execute2yuan_btn">2元支付</string>
+    <string name="execute1fen_btn">1分支付</string>
+    <string name="execute6yuan">6元支付</string>
+    <string name="hintProgress">这里您可以看到提示信息</string>
+    <string name="inputmusicid">musicid:</string>
+    <string name="hintmusicid">在此输入musicid</string>
+    <string name="promptinputmusicid">请输入musicid</string>
+    <string name="cancel">取消</string>
+    <string name="confirm">确认</string>
+</resources>
