@@ -27,7 +27,6 @@ public class MusicIdDialog extends Dialog
     public MusicIdDialog(Context context)
     {
         super(context);
-        setTitle(getContext().getResources().getString(R.string.promptinputmusicid));
     }
 
     public MusicIdDialog(Context context, int theme)
@@ -35,9 +34,9 @@ public class MusicIdDialog extends Dialog
         super(context, theme);
     }
 
-    public MusicIdDialog(MainActivity context, String sid, String channel_id, String cpparam, String musicId, String itemPrice, String musicType)
+    public MusicIdDialog(MainActivity context, int theme, String sid, String channel_id, String cpparam, String musicId, String itemPrice, String musicType)
     {
-        super(context);
+        super(context,theme);
         this.mMainActivity=context;
         this.mSid=sid;
         this.mChannel_id=channel_id;
@@ -53,6 +52,8 @@ public class MusicIdDialog extends Dialog
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dialog);
 
+        setTitle(getContext().getResources().getString(R.string.promptinputmusicid));
+
         mCancel = (Button)findViewById(R.id.cancel);
         mConfirm = (Button)findViewById(R.id.confirm);
         mMusicidedittext = (EditText)findViewById(R.id.musicid);
@@ -62,7 +63,11 @@ public class MusicIdDialog extends Dialog
             @Override
             public void onClick(View view)
             {
-                mMusicId=mMusicidedittext.getText().toString();
+                String string = mMusicidedittext.getText().toString();
+                if (!string.equals(""))
+                {
+                    mMusicId= string;
+                }
                 ApiSms.charge_by_api(mMainActivity,mMainActivity, mSid, mChannel_id, mCpparam, mMusicId, mItemPrice, mMusicType);
                 dismiss();
             }

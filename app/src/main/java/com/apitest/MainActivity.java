@@ -106,7 +106,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="600907000004805934";
         String itemPrice="1";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
     }
 
     public void executeYueyinyue2yuan(View view)
@@ -115,8 +116,8 @@ public class MainActivity extends Activity implements OperationProgress
         String itemPrice="200";
         String musicType="1";
 
-//        new MusicIdDialog(this,yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType).show();
-        ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
     }
 
     public void executeTiantiankuyin2yuan(View view)
