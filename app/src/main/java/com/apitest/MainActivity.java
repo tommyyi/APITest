@@ -41,7 +41,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="600907000001208713";
         String itemPrice="200";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType);
     }
 
     public void executeJuLeTang1fen(View view)
@@ -49,7 +50,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="600907000004805930";
         String itemPrice="1";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), juletangsid, juletangchannel_id, juletangcpparam, musicId, itemPrice, musicType);
     }
 
     public void executeJuLeTang6yuan(View view)
@@ -65,7 +67,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="b34c15896a53355c77732a4ed5b23565";
         String itemPrice="200";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType);
     }
 
     public void executeTianLaiZhiSheng1fen(View view)
@@ -73,7 +76,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="600907000004805930";
         String itemPrice="1";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), tianlaizhishengsid, tianlaizhishengchannel_id, tianlaizhishengcpparam, musicId, itemPrice, musicType);
     }
 
     public void executeTianLaiZhiSheng6yuan(View view)
@@ -125,7 +129,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="b1b082e7d4aa6f123130b3ad7471c8d9";
         String itemPrice="200";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType).show();
+//        ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
     }
 
     public void executeTiantiankuyin1fen(View view)
@@ -133,7 +138,8 @@ public class MainActivity extends Activity implements OperationProgress
         String musicId="600907000004805942";
         String itemPrice="1";
         String musicType="1";
-        ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
+        new MusicIdDialog(this, R.style.dialogstyle, tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType).show();
+        //ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
     }
 
     public void executeTiantiankuyin6yuan(View view)
