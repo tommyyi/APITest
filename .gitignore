@@ -6,6 +6,6 @@ gradle
 gradle.properties
 gradlew
 gradlew.bat
-/app/proguard-rules.pro
+proguard-rules.pro
 local.properties
 /app/.gitignore
