@@ -9,3 +9,13 @@ gradlew.bat
 proguard-rules.pro
 local.properties
 /app/.gitignore
+/build/
+/app/proguard-rules.pro
+/.idea/
+/gradle.properties
+/gradlew
+/app/build/
+/local.properties
+/gradle/
+/.gradle/
+/gradlew.bat
