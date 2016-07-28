@@ -10,11 +10,15 @@
     <string name="tiantiankuyinceshi">天天酷音测试: channel_id(014A1IJ),cpparam(JH322222)</string>
     <string name="execute2yuan_btn">2元支付</string>
     <string name="execute1fen_btn">1分支付</string>
+    <string name="executeYueyinyue10yuan_btn">10元付</string>
+    <string name="executeYueyinyue30yuan_btn">30元付</string>
     <string name="execute6yuan">6元支付</string>
-    <string name="hintProgress">这里您可以看到提示信息</string>
+    <string name="hintProgress">这里您可以看到支付过程的提示信息</string>
     <string name="inputmusicid">musicid:</string>
     <string name="hintmusicid">在此输入musicid</string>
     <string name="promptinputmusicid">请输入musicid</string>
     <string name="cancel">取消</string>
     <string name="confirm">确认</string>
+    <string name="executeTiantiankuyin10yuan_btn">10元付</string>
+    <string name="executeTiantiankuyin30yuan_btn">30元付</string>
 </resources>

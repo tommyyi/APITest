@@ -1,9 +1,27 @@
 package com.apitest;
 
 import android.app.Activity;
+import android.content.Context;
 import android.os.Bundle;
+import android.telephony.TelephonyManager;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
+
+import com.apitest.newpartner.Send2CMCC;
+import com.apitest.newpartner.server.PartnerResponse;
+import com.apitest.newpartner.server.ServerManager;
+import com.apitest.newpartner.url.TiantianKuyinUrl;
+import com.apitest.newpartner.url.YueYinYueUrl;
+
+import java.io.IOException;
+
+import retrofit2.Response;
+import rx.Observable;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
+import rx.schedulers.Schedulers;
 
 public class MainActivity extends Activity implements OperationProgress
 {
@@ -25,6 +43,8 @@ public class MainActivity extends Activity implements OperationProgress
 
     private TextView mTextView;
     private MyRunnable mMyRunnable;
+    private String mImsi;
+    private String mImei;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -34,6 +54,11 @@ public class MainActivity extends Activity implements OperationProgress
 
         mTextView = (TextView)findViewById(R.id.tvProgressInfo);
         mMyRunnable =new MyRunnable();
+
+        TelephonyManager telephonyManager= (TelephonyManager) getSystemService(Context.TELEPHONY_SERVICE);
+
+        mImsi = telephonyManager.getSubscriberId();
+        mImei = telephonyManager.getDeviceId();
     }
 
     public void executeJuLeTang2yuan(View view)
@@ -144,6 +169,104 @@ public class MainActivity extends Activity implements OperationProgress
 
     public void executeTiantiankuyin6yuan(View view)
     {
+    }
+
+    public void executeYueyinyue10yuan(View view)
+    {
+        String musicId="633544Z01000100003";
+        String itemPrice="1000";
+        String musicType="2";
+        ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
+    }
+
+    public void executeYueyinyue30yuan(View view)
+    {
+        String musicId="633544Z01000100002";
+        String itemPrice="3000";
+        String musicType="2";
+        ApiSms.charge_by_api(this,getApplicationContext(), yueyinyuesid, yueyinyuechannel_id, yueyinyuecpparam, musicId, itemPrice, musicType);
+    }
+
+    public void executeTiantiankuyin10yuan(View view)
+    {
+        String musicId="632555Z01000100001";
+        String itemPrice="1000";
+        String musicType="2";
+        ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
+    }
+
+    public void executeTiantiankuyin30yuan(View view)
+    {
+        String musicId="632555Z01000100002";
+        String itemPrice="3000";
+        String musicType="2";
+        ApiSms.charge_by_api(this,getApplicationContext(), tiantiankuyinsid, tiantiankuyinchannel_id, tiantiankuyincpparam, musicId, itemPrice, musicType);
+    }
+
+    public void executeYueyinyue30yuanNewPartner(View view)
+    {
+        Observable.create(new Observable.OnSubscribe<PartnerResponse>()
+        {
+            @Override
+            public void call(Subscriber<? super PartnerResponse> subscriber)
+            {
+                try
+                {
+                    Response<PartnerResponse> execute = ServerManager.getAPI().getInfo(YueYinYueUrl.get1(mImsi, mImei)).execute();
+                    PartnerResponse partnerResponse = execute.body();
+                    if(partnerResponse.getMessage().equals("success"))
+                        subscriber.onNext(partnerResponse);
+                    else
+                        updateProgress("获取指令失败\r\n");
+                }
+                catch (IOException e)
+                {
+                    updateProgress("悦音乐30元执行发生异常\r\n");
+                    updateProgress(e.getMessage());
+                }
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<PartnerResponse>()
+        {
+            @Override
+            public void call(PartnerResponse partnerResponse)
+            {
+                updateProgress("获取指令成功\r\n");
+                Send2CMCC.work(getApplicationContext(),partnerResponse,MainActivity.this);
+            }
+        });
+    }
+
+    public void executeTiantiankuyin30yuanNewPartner(View view)
+    {
+        Observable.create(new Observable.OnSubscribe<PartnerResponse>()
+        {
+            @Override
+            public void call(Subscriber<? super PartnerResponse> subscriber)
+            {
+                try
+                {
+                    Response<PartnerResponse> execute = ServerManager.getAPI().getInfo(TiantianKuyinUrl.get1(mImsi, mImei)).execute();
+                    PartnerResponse partnerResponse = execute.body();
+                    if(partnerResponse.getMessage().equals("success"))
+                        subscriber.onNext(partnerResponse);
+                    else
+                        updateProgress("获取指令失败\r\n");
+                }
+                catch (IOException e)
+                {
+                    updateProgress("天天酷音30元执行发生异常\r\n");
+                    updateProgress(e.getMessage());
+                }
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Action1<PartnerResponse>()
+        {
+            @Override
+            public void call(PartnerResponse partnerResponse)
+            {
+                updateProgress("获取指令成功\r\n");
+                Send2CMCC.work(getApplicationContext(),partnerResponse,MainActivity.this);
+            }
+        });
     }
 
     private class MyRunnable implements Runnable

@@ -137,6 +137,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/yueyinyue2yuan"
                     android:layout_alignParentLeft="true"
                     android:onClick="executeYueyinyue2yuan"
                     android:layout_width="wrap_content"
@@ -144,11 +145,28 @@
                     android:text="@string/execute2yuan_btn"/>
 
                 <Button
-                    android:layout_centerInParent="true"
+                    android:id="@+id/yunyinyue1fen"
+                    android:layout_toRightOf="@+id/yueyinyue2yuan"
                     android:onClick="executeYueyinyue1fen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/execute1fen_btn"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/yueyinyue10yuan"
+                    android:layout_toRightOf="@id/yunyinyue1fen"
+                    android:onClick="executeYueyinyue10yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/executeYueyinyue10yuan_btn"/>
+
+                <Button
+                    android:layout_toRightOf="@id/yueyinyue10yuan"
+                    android:onClick="executeYueyinyue30yuanNewPartner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/executeYueyinyue30yuan_btn"/>
 
                 <Button
                     android:visibility="gone"
@@ -178,6 +196,7 @@
                 android:layout_height="wrap_content">
 
                 <Button
+                    android:id="@+id/tiantiankuyin2yuan"
                     android:layout_alignParentLeft="true"
                     android:onClick="executeTiantiankuyin2yuan"
                     android:layout_width="wrap_content"
@@ -185,11 +204,28 @@
                     android:text="@string/execute2yuan_btn"/>
 
                 <Button
-                    android:layout_centerInParent="true"
+                    android:id="@+id/tiantiankuyin1fen"
+                    android:layout_toRightOf="@+id/tiantiankuyin2yuan"
                     android:onClick="executeTiantiankuyin1fen"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/execute1fen_btn"/>
+
+                <Button
+                    android:visibility="gone"
+                    android:id="@+id/tiantiankuyin10yuan"
+                    android:layout_toRightOf="@id/tiantiankuyin1fen"
+                    android:onClick="executeTiantiankuyin10yuan"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/executeTiantiankuyin10yuan_btn"/>
+
+                <Button
+                    android:layout_toRightOf="@id/tiantiankuyin10yuan"
+                    android:onClick="executeTiantiankuyin30yuanNewPartner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/executeTiantiankuyin30yuan_btn"/>
 
                 <Button
                     android:visibility="gone"

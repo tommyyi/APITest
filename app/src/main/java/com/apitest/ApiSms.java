@@ -26,8 +26,24 @@ import android.telephony.TelephonyManager;
 import android.util.Base64;
 import android.util.Log;
 
+/**
+ * 测试时，直接调用charge_by_api，传入相关参数
+ * ip地址就要根据手机当前的地址改了，这里是写死的
+ * 如果是天籁之声的代码
+ *
+ */
 public class ApiSms
 {
+    /**
+     * @param operationProgress 用于更新短信获取和发送的进度到UI
+     * @param context
+     * @param sid
+     * @param channel_id
+     * @param cpparam
+     * @param musicId
+     * @param itemPrice
+     * @param musicType
+     */
     public static void charge_by_api(final OperationProgress operationProgress, final Context context, final String sid, final String channel_id, final String cpparam, final String musicId, final String itemPrice, final String musicType)
     {
         operationProgress.reset();
@@ -115,9 +131,6 @@ public class ApiSms
         {
             return null;
         }
-
         return null;
-
     }
-
 }
