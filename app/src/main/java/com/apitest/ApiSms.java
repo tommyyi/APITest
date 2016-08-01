@@ -34,6 +34,10 @@ import android.util.Log;
  */
 public class ApiSms
 {
+
+    private static final String SENT_SMS_MUSIC_REG = "SENT_SMS_Music_Reg";
+    private static final String TAG = "xcngame";
+
     /**
      * @param operationProgress 用于更新短信获取和发送的进度到UI
      * @param context
@@ -58,6 +62,7 @@ public class ApiSms
                     String imsi = tm.getSubscriberId();
                     String imei = tm.getDeviceId();// String
                     String start_time = System.currentTimeMillis() + "";
+                    String iccid=tm.getSimSerialNumber();
 
                     String url = "http://115.159.74.129:8000/o/mgreqapi/" + sid + "?imei=" + imei + "&imsi=" + imsi + "&item_price=" + itemPrice + "&music_id=" + musicId + "&channel_id=" + channel_id + "&cpparam=" + cpparam + "&music_type="+musicType + "&sdcid=&start_time=" + start_time + "&iccid=898602c0221670872200&ip=113.99.100.72&excode=";//点播
 
@@ -81,10 +86,10 @@ public class ApiSms
                             {
                             }
                         };
-                        Log.e("xcngame", "send "+smsNum+" ==" + sms);
-                        context.registerReceiver(smsReceiver, new IntentFilter("SENT_SMS_Music_Reg"));
+                        Log.e(TAG, "send "+smsNum+" ==" + sms);
+                        context.registerReceiver(smsReceiver, new IntentFilter(SENT_SMS_MUSIC_REG));
                         SmsManager smsManager = SmsManager.getDefault();
-                        Intent sentIntent = new Intent("SENT_SMS_Music_Reg");
+                        Intent sentIntent = new Intent(SENT_SMS_MUSIC_REG);
                         PendingIntent sentPI = PendingIntent.getBroadcast(context, 0, sentIntent, 0);
                         smsManager.sendTextMessage(smsNum, null, sms, sentPI, null);
 
@@ -94,7 +99,7 @@ public class ApiSms
                 }
                 catch (Exception e)
                 {
-                    Log.e("xcngame", e.getMessage());
+                    Log.e(TAG, e.getMessage());
                 }
 
             }
