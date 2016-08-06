@@ -1,16 +1,36 @@
 apply plugin: 'com.android.application'
 
+ext{
+    APITEST = "com.apitest"
+    APIRUN = "com.api"
+}
+
+String appid="";
+
 android {
     compileSdkVersion 10
     buildToolsVersion "23.0.3"
 
-    defaultConfig {
-        applicationId "com.apitest"
-        minSdkVersion 10
-        versionCode 1
-        versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    productFlavors {
+        tuneAPK {
+            applicationId APITEST
+            appid=applicationId
+            minSdkVersion 10
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
+
+        normalAPK {
+            applicationId APIRUN
+            appid=applicationId
+            minSdkVersion 10
+            versionCode 1
+            versionName "1.0"
+            testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        }
     }
+
     buildTypes {
         release {
             minifyEnabled false
@@ -29,3 +49,37 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'io.reactivex:rxandroid:1.2.1'
 }
+
+//task printinfo {
+//    String file="D:\\CODE\\Practice\\APITest\\app\\src\\main\\AndroidManifest.xml";
+//
+//    FileInputStream fileInputStream = new FileInputStream(file);
+//    byte[] buffer=new byte[fileInputStream.available()];
+//    System.out.println(buffer.length+"\r\n");
+//    fileInputStream.read(buffer);
+//    fileInputStream.close();
+//
+//    String content=new String(buffer);
+//    System.out.println(content+"\r\n");
+//
+//    String first="<meta-data android:name=\"test\" android:value=\"";
+//    String second="\"/>";
+//    String keyValue = content.split(first)[1].split(second)[0];
+//    String replace="AAA";
+//    if(appid.equals(APITEST))
+//        replace="THIIS IS API TEST";
+//    else
+//        replace="THIIS IS API NORMAL";
+//
+//    String str1=first+keyValue+second;
+//    String str2=first+replace+second;
+//    content=content.replace(str1,str2);
+//
+//    System.out.println(content+"\r\n");
+//
+//    FileOutputStream fileOutputStream=new FileOutputStream(file);
+//    buffer=content.getBytes();
+//    fileOutputStream.write(buffer);
+//    fileOutputStream.close();
+//}
+//printinfo.dependsOn(build)
