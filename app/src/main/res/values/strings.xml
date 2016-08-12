@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">音乐破解测试</string>
     <string name="amount">金额(单位分):</string>
-    <string name="musicid">音乐ID:</string>
+    <string name="musicid">音乐编码:</string>
+    <string name="musicprice">音乐价格:</string>
     <string name="musictype">音乐类型:</string>
 
     <string name="juletangceshi">聚乐堂测试: channel_id(014A1HA),cpparam(JH6653)</string>
@@ -15,7 +16,8 @@
     <string name="execute6yuan">6元支付</string>
     <string name="hintProgress">这里您可以看到支付过程的提示信息</string>
     <string name="inputmusicid">musicid:</string>
-    <string name="hintmusicid">在此输入musicid</string>
+    <string name="hintmusicid">输入musicid，不输入默认为默认值</string>
+    <string name="hintmusicprice">输入价格(分)，不输入默认为默认值</string>
     <string name="promptinputmusicid">请输入musicid</string>
     <string name="cancel">取消</string>
     <string name="confirm">确认</string>

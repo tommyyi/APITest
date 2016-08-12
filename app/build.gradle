@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
-ext{
+ext {
     APITEST = "com.apitest"
     APIRUN = "com.api"
 }
 
-String appid="";
+String appid = "";
 
 android {
     compileSdkVersion 10
@@ -14,7 +14,7 @@ android {
     productFlavors {
         tuneAPK {
             applicationId APITEST
-            appid=applicationId
+            appid = applicationId
             minSdkVersion 10
             versionCode 1
             versionName "1.0"
@@ -23,13 +23,31 @@ android {
 
         normalAPK {
             applicationId APIRUN
-            appid=applicationId
+            appid = applicationId
             minSdkVersion 10
             versionCode 1
             versionName "1.0"
             testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         }
     }
+
+    applicationVariants.all ({ variant ->
+        variant.outputs.each ({ output ->
+            def outputFile = output.outputFile
+            if (outputFile != null && outputFile.name.endsWith('.apk')) {
+                // 输出apk名称为app-YueYinYueConfig-release_v1.3_2016-08-05.apk
+                def fileName = "_v${variant.productFlavors[0].versionName}_${releaseTime()}.apk"
+
+                String name = outputFile.name
+                if(name.contains("normalAPK"))
+                    name=name.replace("normalAPK","音乐代码破解测试")
+                if(name.contains("tuneAPK"))
+                    name=name.replace("tuneAPK","音乐代码破解测试")
+                output.outputFile = new File(outputFile.parent, name.replace("app-", "").replace("Config", "").replace(".apk", fileName).replace("-debug", "").replace("-release", ""))
+                //changeManifest(output.outputFile.name)
+            }
+        })
+    })
 
     buildTypes {
         release {
@@ -50,36 +68,41 @@ dependencies {
     compile 'io.reactivex:rxandroid:1.2.1'
 }
 
-//task printinfo {
-//    String file="D:\\CODE\\Practice\\APITest\\app\\src\\main\\AndroidManifest.xml";
-//
-//    FileInputStream fileInputStream = new FileInputStream(file);
-//    byte[] buffer=new byte[fileInputStream.available()];
-//    System.out.println(buffer.length+"\r\n");
-//    fileInputStream.read(buffer);
-//    fileInputStream.close();
-//
-//    String content=new String(buffer);
-//    System.out.println(content+"\r\n");
-//
-//    String first="<meta-data android:name=\"test\" android:value=\"";
-//    String second="\"/>";
-//    String keyValue = content.split(first)[1].split(second)[0];
-//    String replace="AAA";
-//    if(appid.equals(APITEST))
-//        replace="THIIS IS API TEST";
-//    else
-//        replace="THIIS IS API NORMAL";
-//
-//    String str1=first+keyValue+second;
-//    String str2=first+replace+second;
-//    content=content.replace(str1,str2);
-//
-//    System.out.println(content+"\r\n");
-//
-//    FileOutputStream fileOutputStream=new FileOutputStream(file);
-//    buffer=content.getBytes();
-//    fileOutputStream.write(buffer);
-//    fileOutputStream.close();
-//}
+String releaseTime() {
+    return new Date().format("MMdd", TimeZone.getTimeZone("Asia/Shanghai"))
+}
+
+def printInfo()
+{
+    String file = "D:\\CODE\\Practice\\APITest\\app\\src\\main\\AndroidManifest.xml";
+
+    FileInputStream fileInputStream = new FileInputStream(file);
+    byte[] buffer = new byte[fileInputStream.available()];
+    System.out.println(buffer.length + "\r\n");
+    fileInputStream.read(buffer);
+    fileInputStream.close();
+
+    String content = new String(buffer);
+    System.out.println(content + "\r\n");
+
+    String first = "<meta-data android:name=\"test\" android:value=\"";
+    String second = "\"/>";
+    String keyValue = content.split(first)[1].split(second)[0];
+    String replace = "AAA";
+    if (appid.equals(APITEST))
+        replace = "THIIS IS API TEST";
+    else
+        replace = "THIIS IS API NORMAL";
+
+    String str1 = first + keyValue + second;
+    String str2 = first + replace + second;
+    content = content.replace(str1, str2);
+
+    System.out.println(content + "\r\n");
+
+    FileOutputStream fileOutputStream = new FileOutputStream(file);
+    buffer = content.getBytes();
+    fileOutputStream.write(buffer);
+    fileOutputStream.close();
+}
 //printinfo.dependsOn(build)

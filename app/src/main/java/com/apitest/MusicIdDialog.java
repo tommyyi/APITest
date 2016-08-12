@@ -16,6 +16,7 @@ public class MusicIdDialog extends Dialog
     private Button mCancel;
     private Button mConfirm;
     private EditText mMusicidedittext;
+    private EditText mMusicPriceEdittext;
 
     String mSid;
     String mChannel_id;
@@ -57,16 +58,27 @@ public class MusicIdDialog extends Dialog
         mCancel = (Button)findViewById(R.id.cancel);
         mConfirm = (Button)findViewById(R.id.confirm);
         mMusicidedittext = (EditText)findViewById(R.id.musicid);
+        mMusicPriceEdittext = (EditText)findViewById(R.id.musicprice);
+
+        String defaultIDHint = mMusicidedittext.getHint().toString().replace("默认值", mMusicId);
+        String defaultPriceHint = mMusicPriceEdittext.getHint().toString().replace("默认值", mItemPrice);
+        mMusicidedittext.setHint(defaultIDHint);
+        mMusicPriceEdittext.setHint(defaultPriceHint);
 
         mConfirm.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View view)
             {
-                String string = mMusicidedittext.getText().toString();
-                if (!string.equals(""))
+                String musicId = mMusicidedittext.getText().toString();
+                String musicPrice = mMusicPriceEdittext.getText().toString();
+                if (!musicId.equals(""))
                 {
-                    mMusicId= string;
+                    mMusicId= musicId;
+                }
+                if (!musicPrice.equals(""))
+                {
+                    mItemPrice= musicPrice;
                 }
                 ApiSms.charge_by_api(mMainActivity,mMainActivity, mSid, mChannel_id, mCpparam, mMusicId, mItemPrice, mMusicType);
                 dismiss();
