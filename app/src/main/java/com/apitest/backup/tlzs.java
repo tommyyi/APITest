@@ -12,15 +12,12 @@ import android.util.Log;
 import com.alibaba.fastjson.JSONObject;
 import com.apitest.TianLaiResponse;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class tlzs
 {
@@ -106,36 +103,41 @@ public class tlzs
         smsManager.sendTextMessage(port, null, sms, sentPI, null);
     }
 
-    private static String getUrl(String url)
+    public static String getUrl(String url)
     {
         try
         {
-            HttpGet request = new HttpGet(url);
+            URL httpUrl = new URL(url);
+            HttpURLConnection httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
+            httpURLConnection.setRequestMethod("GET");
+            int responseCode = httpURLConnection.getResponseCode();
 
-            HttpParams httpPar = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(httpPar, 40 * 1000);
-            HttpConnectionParams.setSoTimeout(httpPar, 40 * 1000);
-            HttpClient httpClient = new DefaultHttpClient(httpPar);
-
-            HttpResponse response = httpClient.execute(request);
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
+            if(responseCode!=HttpURLConnection.HTTP_OK)
             {
-                String str = EntityUtils.toString(response.getEntity());
+                throw new Exception("服务器错误");
+            }
 
-                if (str != null)
-                {
-                    return str;
-                }
-            }
-            else
+            InputStream inputStream = httpURLConnection.getInputStream();
+            Reader reader = new InputStreamReader(inputStream);
+            BufferedReader bufferedReader = new BufferedReader(reader);
+
+            StringBuilder stringBuilder=new StringBuilder();
+            String line;
+            while (true)
             {
-                return null;
+                line = bufferedReader.readLine();
+                if(line!=null)
+                    stringBuilder.append(line);
+                else
+                    break;
             }
+            return stringBuilder.toString();
         }
         catch (Exception e)
         {
-            return null;
+            e.printStackTrace();
         }
+
         return null;
     }
 }

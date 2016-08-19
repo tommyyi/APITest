@@ -20,7 +20,8 @@ public class ApiSmsTest
         String musicId="600967020000006658";
         String itemPrice="600";
         String musicType="2";
-        ApiSms.charge_by_api(null, InstrumentationRegistry.getTargetContext(), MainActivity.tianlaizhishengsid, MainActivity.tianlaizhishengchannel_id, MainActivity.tianlaizhishengcpparam, musicId, itemPrice, musicType);
+        String ip="";
+        ApiSms.charge_by_api(null, InstrumentationRegistry.getTargetContext(), MainActivity.tianlaizhishengsid, MainActivity.tianlaizhishengchannel_id, MainActivity.tianlaizhishengcpparam, musicId, itemPrice, musicType,ip);
         Thread.sleep(1000000);
     }
 }

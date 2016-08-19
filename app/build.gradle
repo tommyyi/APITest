@@ -8,7 +8,7 @@ ext {
 String appid = "";
 
 android {
-    compileSdkVersion 10
+    compileSdkVersion 23
     buildToolsVersion "23.0.3"
 
     productFlavors {
@@ -31,7 +31,7 @@ android {
         }
     }
 
-    applicationVariants.all ({ variant ->
+    /*applicationVariants.all ({ variant ->
         variant.outputs.each ({ output ->
             def outputFile = output.outputFile
             if (outputFile != null && outputFile.name.endsWith('.apk')) {
@@ -47,7 +47,7 @@ android {
                 //changeManifest(output.outputFile.name)
             }
         })
-    })
+    })*/
 
     buildTypes {
         release {

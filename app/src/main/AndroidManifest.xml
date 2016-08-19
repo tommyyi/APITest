@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         tools:ignore="GoogleAppIndexingWarning,MissingApplicationIcon">
-        <activity android:name=".MainActivity">
+        <activity android:name="com.apitest.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

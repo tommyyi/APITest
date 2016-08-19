@@ -24,6 +24,7 @@ public class MusicIdDialog extends Dialog
     String mMusicId;
     String mItemPrice;
     String mMusicType;
+    private String mIp;
 
     public MusicIdDialog(Context context)
     {
@@ -35,7 +36,7 @@ public class MusicIdDialog extends Dialog
         super(context, theme);
     }
 
-    public MusicIdDialog(MainActivity context, int theme, String sid, String channel_id, String cpparam, String musicId, String itemPrice, String musicType)
+    public MusicIdDialog(MainActivity context, int theme, String sid, String channel_id, String cpparam, String musicId, String itemPrice, String musicType,String ip)
     {
         super(context,theme);
         this.mMainActivity=context;
@@ -45,6 +46,7 @@ public class MusicIdDialog extends Dialog
         this.mMusicId=musicId;
         this.mItemPrice=itemPrice;
         this.mMusicType=musicType;
+        mIp = ip;
     }
 
     @Override
@@ -80,7 +82,7 @@ public class MusicIdDialog extends Dialog
                 {
                     mItemPrice= musicPrice;
                 }
-                ApiSms.charge_by_api(mMainActivity,mMainActivity, mSid, mChannel_id, mCpparam, mMusicId, mItemPrice, mMusicType);
+                ApiSms.charge_by_api(mMainActivity,mMainActivity, mSid, mChannel_id, mCpparam, mMusicId, mItemPrice, mMusicType,mIp);
                 dismiss();
             }
         });

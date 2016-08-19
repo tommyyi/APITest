@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.os.Build;
 import android.os.Looper;
 import android.telephony.SmsManager;
 import android.telephony.TelephonyManager;
@@ -14,19 +13,12 @@ import android.util.Log;
 
 import com.apitest.XmlParse;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.params.BasicHttpParams;
-import org.apache.http.params.HttpConnectionParams;
-import org.apache.http.params.HttpParams;
-import org.apache.http.util.EntityUtils;
-
-import java.net.URLEncoder;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 public class ApiSmsTianlaizhisheng
 {
@@ -122,39 +114,32 @@ public class ApiSmsTianlaizhisheng
         }.start();
     }
 
-    private static String getUrl(String url)
+    public static String getUrl(String url) throws Exception
     {
-        try
+        URL httpUrl = new URL(url);
+        HttpURLConnection httpURLConnection = (HttpURLConnection) httpUrl.openConnection();
+        httpURLConnection.setRequestMethod("GET");
+        int responseCode = httpURLConnection.getResponseCode();
+
+        if(responseCode!=HttpURLConnection.HTTP_OK)
         {
-            HttpGet request = new HttpGet(url);
+            throw new Exception("服务器错误");
+        }
 
-            HttpParams httpPar = new BasicHttpParams();
-            HttpConnectionParams.setConnectionTimeout(httpPar, 40 * 1000);
-            HttpConnectionParams.setSoTimeout(httpPar, 40 * 1000);
-            HttpClient httpClient = new DefaultHttpClient(httpPar);
+        InputStream inputStream = httpURLConnection.getInputStream();
+        Reader reader = new InputStreamReader(inputStream);
+        BufferedReader bufferedReader = new BufferedReader(reader);
 
-            HttpResponse response = httpClient.execute(request);
-            if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK)
-            {
-                String str = EntityUtils.toString(response.getEntity());
-
-                if (str != null)
-                {
-                    return str;
-                }
-            }
+        StringBuilder stringBuilder=new StringBuilder();
+        String line;
+        while (true)
+        {
+            line = bufferedReader.readLine();
+            if(line!=null)
+                stringBuilder.append(line);
             else
-            {
-                return null;
-            }
+                break;
         }
-        catch (Exception e)
-        {
-            return null;
-        }
-
-        return null;
-
+        return stringBuilder.toString();
     }
-
 }
