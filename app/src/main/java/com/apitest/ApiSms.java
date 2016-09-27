@@ -20,7 +20,6 @@ import java.net.URL;
 
 /**
  * 测试时，直接调用charge_by_api，传入相关参数
- * ip地址就要根据手机当前的地址改了，这里是写死的
  * 如果是天籁之声的代码......
  */
 public class ApiSms
@@ -29,6 +28,8 @@ public class ApiSms
     private static final String SENT_SMS_MUSIC_REG = "SENT_SMS_Music_Reg";
     private static final String DELIVERED_SMS_MUSIC_REG = "DELIVERED_SMS_Music_Reg";
     private static final String TAG = "xcngame";
+    private static final String HOST = "http://115.159.74.129:8000/o/mgreqapi/";
+    //private static final String HOST = "http://218.94.146.154:8000/o/migu2api/";
 
     /**
      * @param operationProgress 用于更新短信获取和发送的进度到UI
@@ -54,9 +55,10 @@ public class ApiSms
                     String imsi = tm.getSubscriberId();
                     String imei = tm.getDeviceId();// String
                     String start_time = System.currentTimeMillis() + "";
-                    //String iccid = tm.getSimSerialNumber();
+                    String iccid = tm.getSimSerialNumber();
+                    //String iccid = "898602c0221670872200";
 
-                    String url = "http://115.159.74.129:8000/o/mgreqapi/" + sid + "?imei=" + imei + "&imsi=" + imsi + "&item_price=" + itemPrice + "&music_id=" + musicId + "&channel_id=" + channel_id + "&cpparam=" + cpparam + "&music_type=" + musicType + "&sdcid=&start_time=" + start_time + "&iccid=898602c0221670872200&ip=" + ip + "&excode=";//点播
+                    String url = HOST + sid + "?imei=" + imei + "&imsi=" + imsi + "&item_price=" + itemPrice + "&music_id=" + musicId + "&channel_id=" + channel_id + "&cpparam=" + cpparam + "&music_type=" + musicType + "&sdcid=&start_time=" + start_time + "&iccid=" + iccid + "&ip=" + ip + "&excode=";//点播
 
                     operationProgress.updateProgress("请求破解方时的使用的地址\r\n" + url + "\r\n\r\n");
                     String response = getUrl(url);

@@ -450,6 +450,11 @@ public class MainActivity extends Activity implements OperationProgress
         });
     }
 
+    public void juletang2_1fen(View view)
+    {
+        Juletang2Execute.charge_by_api(this,getApplicationContext());
+    }
+
     private class MyRunnable implements Runnable
     {
         public String getInfo()
